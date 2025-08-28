@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Visualize Data</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome CDN for modern icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+</head>
+<body class="bg-black min-h-screen flex flex-col items-center justify-center p-8">
+  <div class="text-center mb-12">
+    <div class="inline-flex items-center justify-center w-20 h-20 bg-blue-600 rounded-full mb-6">
+      <i class="fa-solid fa-chart-line text-white text-3xl"></i>
+    </div>
+    <h2 class="text-4xl font-bold text-white mb-2">Data Visualization</h2>
+    <p class="text-gray-400 text-lg">Choose a category to explore your data</p>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 max-w-4xl w-full">
+    <a href="/visualize/countries" 
+       class="group relative overflow-hidden bg-gradient-to-br from-green-600 to-green-700 hover:from-green-500 hover:to-green-600 text-white rounded-3xl p-8 shadow-2xl hover:scale-105 transition-all duration-300 hover:shadow-green-500/25">
+      <div class="flex items-center gap-6">
+        <div class="flex-shrink-0 w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center group-hover:bg-white/30 transition-colors">
+          <i class="fa-solid fa-globe-americas text-2xl"></i>
+        </div>
+        <div>
+          <h3 class="text-2xl font-bold mb-2">Countries</h3>
+          <p class="text-green-100 text-sm opacity-90">Explore country-based data visualizations</p>
+        </div>
+      </div>
+      <div class="absolute -top-4 -right-4 w-24 h-24 bg-white/10 rounded-full blur-xl"></div>
+    </a>
+
+    <a href="/visualize/continents" 
+       class="group relative overflow-hidden bg-gradient-to-br from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white rounded-3xl p-8 shadow-2xl hover:scale-105 transition-all duration-300 hover:shadow-blue-500/25">
+      <div class="flex items-center gap-6">
+        <div class="flex-shrink-0 w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center group-hover:bg-white/30 transition-colors">
+          <i class="fa-solid fa-earth-americas text-2xl"></i>
+        </div>
+        <div>
+          <h3 class="text-2xl font-bold mb-2">Continents</h3>
+          <p class="text-blue-100 text-sm opacity-90">View continental distribution patterns</p>
+        </div>
+      </div>
+      <div class="absolute -top-4 -right-4 w-24 h-24 bg-white/10 rounded-full blur-xl"></div>
+    </a>
+
+    <a href="/visualize/organizations" 
+       class="group relative overflow-hidden bg-gradient-to-br from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 text-white rounded-3xl p-8 shadow-2xl hover:scale-105 transition-all duration-300 hover:shadow-purple-500/25">
+      <div class="flex items-center gap-6">
+        <div class="flex-shrink-0 w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center group-hover:bg-white/30 transition-colors">
+          <i class="fa-solid fa-building text-2xl"></i>
+        </div>
+        <div>
+          <h3 class="text-2xl font-bold mb-2">Organizations</h3>
+          <p class="text-purple-100 text-sm opacity-90">Analyze organizational data trends</p>
+        </div>
+      </div>
+      <div class="absolute -top-4 -right-4 w-24 h-24 bg-white/10 rounded-full blur-xl"></div>
+    </a>
+
+    <a href="/visualize/languages" 
+       class="group relative overflow-hidden bg-gradient-to-br from-orange-600 to-orange-700 hover:from-orange-500 hover:to-orange-600 text-white rounded-3xl p-8 shadow-2xl hover:scale-105 transition-all duration-300 hover:shadow-orange-500/25">
+      <div class="flex items-center gap-6">
+        <div class="flex-shrink-0 w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center group-hover:bg-white/30 transition-colors">
+          <i class="fa-solid fa-language text-2xl"></i>
+        </div>
+        <div>
+          <h3 class="text-2xl font-bold mb-2">Languages</h3>
+          <p class="text-orange-100 text-sm opacity-90">Discover language distribution insights</p>
+        </div>
+      </div>
+      <div class="absolute -top-4 -right-4 w-24 h-24 bg-white/10 rounded-full blur-xl"></div>
+    </a>
+  </div>
+
+  <div class="mt-12 text-center">
+    <p class="text-gray-500 text-sm flex items-center justify-center gap-2">
+      <i class="fa-solid fa-info-circle"></i>
+      Click any category to start exploring your data
+    </p>
+  </div>
+</body>
+</html>

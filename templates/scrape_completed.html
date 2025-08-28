@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scraping {% if status.error %}Failed{% else %}Completed{% endif %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome CDN for modern icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+</head>
+<body class="bg-black min-h-screen flex flex-col items-center justify-center">
+  <div class="bg-gray-900 p-10 rounded-3xl shadow-2xl border border-gray-700 w-full max-w-lg text-center">
+    
+    {% if status.error %}
+      <!-- Error State -->
+      <div class="mb-8">
+        <div class="inline-flex items-center justify-center w-24 h-24 bg-red-600 rounded-full mb-6">
+          <i class="fa-solid fa-exclamation-triangle text-white text-4xl"></i>
+        </div>
+        <h2 class="text-4xl font-bold text-white mb-4">Scraping Failed</h2>
+        <p class="text-red-400 text-lg mb-6">{{ status.current_task }}</p>
+        
+        <div class="bg-red-900 border border-red-700 rounded-xl p-4 mb-6">
+          <h3 class="text-red-300 font-semibold mb-2 flex items-center gap-2">
+            <i class="fa-solid fa-bug text-red-400"></i>
+            Error Details:
+          </h3>
+          <p class="text-red-200 text-sm">{{ status.error }}</p>
+        </div>
+        
+        <div class="bg-gray-800 rounded-xl p-4 mb-6">
+          <h3 class="text-white font-semibold mb-2 flex items-center gap-2">
+            <i class="fa-solid fa-lightbulb text-yellow-400"></i>
+            What to try:
+          </h3>
+          <ul class="text-gray-300 text-sm text-left space-y-1">
+            <li>• Check your internet connection</li>
+            <li>• Verify database connectivity</li>
+            <li>• Try running the scraper again</li>
+            <li>• Contact administrator if the problem persists</li>
+          </ul>
+        </div>
+      </div>
+    {% else %}
+      <!-- Success State -->
+      <div class="mb-8">
+        <div class="inline-flex items-center justify-center w-24 h-24 bg-green-600 rounded-full mb-6">
+          <i class="fa-solid fa-check text-white text-4xl"></i>
+        </div>
+        <h2 class="text-4xl font-bold text-white mb-4">Scraping Completed!</h2>
+        <p class="text-green-400 text-lg mb-6">{{ status.current_task }}</p>
+        
+        <!-- Success Statistics -->
+        <div class="bg-gray-800 rounded-xl p-4 mb-6">
+          <h3 class="text-white font-semibold mb-3 flex items-center gap-2">
+            <i class="fa-solid fa-chart-bar text-green-400"></i>
+            Data Successfully Updated:
+          </h3>
+          <div class="grid grid-cols-2 gap-3 text-sm">
+            <div class="bg-gray-700 rounded-lg p-3">
+              <i class="fa-solid fa-globe text-green-400 text-lg mb-1"></i>
+              <p class="text-white font-medium">Countries</p>
+              <p class="text-gray-300 text-xs">Demographics & Info</p>
+            </div>
+            <div class="bg-gray-700 rounded-lg p-3">
+              <i class="fa-solid fa-building text-blue-400 text-lg mb-1"></i>
+              <p class="text-white font-medium">Organizations</p>
+              <p class="text-gray-300 text-xs">International Bodies</p>
+            </div>
+            <div class="bg-gray-700 rounded-lg p-3">
+              <i class="fa-solid fa-handshake text-yellow-400 text-lg mb-1"></i>
+              <p class="text-white font-medium">Trade Relations</p>
+              <p class="text-gray-300 text-xs">Economic Data</p>
+            </div>
+            <div class="bg-gray-700 rounded-lg p-3">
+              <i class="fa-solid fa-map text-purple-400 text-lg mb-1"></i>
+              <p class="text-white font-medium">Borders</p>
+              <p class="text-gray-300 text-xs">Geographic Info</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-green-900 border border-green-700 rounded-xl p-4 mb-6">
+          <div class="flex items-center gap-2 text-green-300">
+            <i class="fa-solid fa-database"></i>
+            <span class="font-medium">Database Status:</span>
+            <span class="text-green-200">Successfully Updated</span>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+    
+    <!-- Action Buttons -->
+    <div class="space-y-4">
+      <a href="/" 
+         class="w-full flex items-center justify-center gap-3 px-8 py-5 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white font-bold rounded-2xl shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-blue-400 focus:ring-opacity-50 text-xl">
+        <i class="fa-solid fa-home text-xl"></i>
+        Back to Home
+      </a>
+      
+      {% if not status.error %}
+        <a href="/visualize" 
+           class="w-full flex items-center justify-center gap-3 px-6 py-4 bg-green-600 hover:bg-green-500 text-white font-semibold rounded-xl shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-green-400 focus:ring-opacity-50">
+          <i class="fa-solid fa-chart-pie"></i>
+          Visualize Data
+        </a>
+      {% else %}
+        <a href="/scrape" 
+           class="w-full flex items-center justify-center gap-3 px-6 py-4 bg-orange-600 hover:bg-orange-500 text-white font-semibold rounded-xl shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-orange-400 focus:ring-opacity-50">
+          <i class="fa-solid fa-retry"></i>
+          Try Again
+        </a>
+      {% endif %}
+    </div>
+    
+    <!-- Footer Note -->
+    <div class="mt-6">
+      {% if status.error %}
+        <p class="text-gray-500 text-xs">
+          <i class="fa-solid fa-clock mr-1"></i>
+          Failed at {{ status.timestamp }}
+        </p>
+      {% else %}
+        <p class="text-gray-500 text-xs">
+          <i class="fa-solid fa-clock mr-1"></i>
+          Completed at {{ status.timestamp }}
+        </p>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Auto-refresh status display -->
+  <script>
+    // Add some confetti animation for success
+    {% if not status.error %}
+    document.addEventListener('DOMContentLoaded', function() {
+      // Simple success animation
+      const icon = document.querySelector('.fa-check');
+      if (icon) {
+        setTimeout(() => {
+          icon.style.transform = 'scale(1.2)';
+          setTimeout(() => {
+            icon.style.transform = 'scale(1)';
+          }, 200);
+        }, 500);
+      }
+    });
+    {% endif %}
+  </script>
+</body>
+</html>

@@ -22,3 +22,15 @@ class Country(Base):
     continent_id = Column(Integer, ForeignKey("continent.id"))
 
     continent = relationship("Continent", back_populates="countries")
+
+class Language(Base):
+    __tablename__ = "language"
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, nullable=False)
+
+class CountryLanguage(Base):
+    __tablename__ = "country_language"
+    id = Column(Integer, primary_key=True, index=True)
+    country_id = Column(Integer, ForeignKey("country.id"))
+    language_id = Column(Integer, ForeignKey("language.id"))
+    is_official = Column(Boolean, default=False)

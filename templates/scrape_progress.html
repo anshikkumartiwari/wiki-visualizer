@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scraping in Progress</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome CDN for modern icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+</head>
+<body class="bg-black min-h-screen flex flex-col items-center justify-center">
+  <div class="bg-gray-900 p-10 rounded-3xl shadow-2xl border border-gray-700 w-full max-w-lg text-center">
+    <div class="mb-8">
+      <!-- Animated loading icon -->
+      <div class="inline-flex items-center justify-center w-24 h-24 bg-blue-600 rounded-full mb-6">
+        <i id="loadingIcon" class="fa-solid fa-spinner text-white text-4xl animate-spin"></i>
+      </div>
+      <h2 class="text-4xl font-bold text-white mb-4">Scraping Data</h2>
+      <p id="currentTask" class="text-gray-400 text-lg mb-6">Initializing scraping process...</p>
+    </div>
+    
+    <!-- Progress Bar -->
+    <div class="mb-8">
+      <div class="bg-gray-700 rounded-full h-4 mb-4">
+        <div id="progressBar" class="bg-gradient-to-r from-blue-500 to-blue-600 h-4 rounded-full transition-all duration-500 ease-out" style="width: 0%"></div>
+      </div>
+      <div class="flex justify-between text-sm text-gray-400">
+        <span>Progress</span>
+        <span id="progressPercent">0%</span>
+      </div>
+    </div>
+    
+    <!-- Status indicators -->
+    <div class="bg-gray-800 rounded-xl p-4 mb-6">
+      <h3 class="text-white font-semibold mb-3 flex items-center gap-2">
+        <i class="fa-solid fa-tasks text-blue-400"></i>
+        Processing Steps:
+      </h3>
+      <div class="space-y-2">
+        <div id="step1" class="flex items-center gap-3 text-gray-400">
+          <i class="fa-solid fa-circle text-xs"></i>
+          <span>Fetching countries data</span>
+          <i class="fa-solid fa-clock text-xs ml-auto"></i>
+        </div>
+        <div id="step2" class="flex items-center gap-3 text-gray-400">
+          <i class="fa-solid fa-circle text-xs"></i>
+          <span>Processing organizations</span>
+          <i class="fa-solid fa-clock text-xs ml-auto"></i>
+        </div>
+        <div id="step3" class="flex items-center gap-3 text-gray-400">
+          <i class="fa-solid fa-circle text-xs"></i>
+          <span>Analyzing trade relations</span>
+          <i class="fa-solid fa-clock text-xs ml-auto"></i>
+        </div>
+        <div id="step4" class="flex items-center gap-3 text-gray-400">
+          <i class="fa-solid fa-circle text-xs"></i>
+          <span>Mapping borders</span>
+          <i class="fa-solid fa-clock text-xs ml-auto"></i>
+        </div>
+      </div>
+    </div>
+    
+    <div class="text-gray-500 text-xs">
+      <i class="fa-solid fa-info-circle mr-1"></i>
+      Please don't close this page while scraping is in progress
+    </div>
+  </div>
+
+  <script>
+    // Function to update step status
+    function updateStepStatus(stepNumber, status) {
+      const step = document.getElementById(`step${stepNumber}`);
+      const icon = step.querySelector('i:first-child');
+      const statusIcon = step.querySelector('i:last-child');
+      
+      if (status === 'active') {
+        step.className = 'flex items-center gap-3 text-blue-400';
+        icon.className = 'fa-solid fa-circle text-xs text-blue-400';
+        statusIcon.className = 'fa-solid fa-spinner animate-spin text-xs ml-auto text-blue-400';
+      } else if (status === 'completed') {
+        step.className = 'flex items-center gap-3 text-green-400';
+        icon.className = 'fa-solid fa-check-circle text-xs text-green-400';
+        statusIcon.className = 'fa-solid fa-check text-xs ml-auto text-green-400';
+      } else {
+        step.className = 'flex items-center gap-3 text-gray-400';
+        icon.className = 'fa-solid fa-circle text-xs';
+        statusIcon.className = 'fa-solid fa-clock text-xs ml-auto';
+      }
+    }
+    
+    // Function to update progress
+    function updateProgress(data) {
+      const progressBar = document.getElementById('progressBar');
+      const progressPercent = document.getElementById('progressPercent');
+      const currentTask = document.getElementById('currentTask');
+      const loadingIcon = document.getElementById('loadingIcon');
+      
+      // Update progress bar
+      progressBar.style.width = data.progress + '%';
+      progressPercent.textContent = data.progress + '%';
+      
+      // Update current task
+      currentTask.textContent = data.current_task;
+      
+      // Update step statuses based on progress
+      if (data.progress >= 25) updateStepStatus(1, 'completed');
+      else if (data.progress > 0) updateStepStatus(1, 'active');
+      
+      if (data.progress >= 50) updateStepStatus(2, 'completed');
+      else if (data.progress >= 25) updateStepStatus(2, 'active');
+      
+      if (data.progress >= 75) updateStepStatus(3, 'completed');
+      else if (data.progress >= 50) updateStepStatus(3, 'active');
+      
+      if (data.progress >= 90) updateStepStatus(4, 'completed');
+      else if (data.progress >= 75) updateStepStatus(4, 'active');
+      
+      // Handle completion or errors
+      if (data.completed || data.error) {
+        if (data.completed) {
+          loadingIcon.className = 'fa-solid fa-check text-white text-4xl text-green-400';
+          // Redirect to completion page after a short delay
+          setTimeout(() => {
+            window.location.href = '/scrape/completed';
+          }, 2000);
+        } else if (data.error) {
+          loadingIcon.className = 'fa-solid fa-exclamation-triangle text-white text-4xl text-red-400';
+          currentTask.textContent = 'Error: ' + data.error;
+          currentTask.className = 'text-red-400 text-lg mb-6';
+        }
+      }
+    }
+    
+    // Poll for status updates
+    function pollStatus() {
+      fetch('/scrape/status')
+        .then(response => response.json())
+        .then(data => {
+          updateProgress(data);
+          
+          // Continue polling if still in progress
+          if (data.in_progress) {
+            setTimeout(pollStatus, 1000); // Poll every second
+          }
+        })
+        .catch(error => {
+          console.error('Error polling status:', error);
+          setTimeout(pollStatus, 2000); // Retry after 2 seconds on error
+        });
+    }
+    
+    // Start polling when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(pollStatus, 500); // Start polling after a short delay
+    });
+  </script>
+</body>
+</html>

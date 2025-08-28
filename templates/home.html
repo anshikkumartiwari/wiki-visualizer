@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Wiki Visualizer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome CDN for modern icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+</head>
+<body class="bg-black min-h-screen flex flex-col items-center justify-center">
+  <h1 class="text-5xl font-extrabold mb-12 text-white flex items-center gap-4 tracking-tight">
+    <i class="fa-solid fa-globe text-blue-500"></i>
+    Wiki Visualizer
+  </h1>
+  <div class="flex gap-12">
+    <a href="/scrape"
+       class="flex items-center gap-3 px-10 py-6 bg-blue-700 hover:bg-blue-600 text-white text-2xl rounded-3xl shadow-xl hover:scale-105 hover:shadow-2xl transition-all duration-200 font-semibold focus:outline-none focus:ring-4 focus:ring-blue-400 focus:ring-opacity-50">
+      <i class="fa-solid fa-download"></i>
+      Scrape &amp; Update
+    </a>
+    <a href="/visualize"
+       class="flex items-center gap-3 px-10 py-6 bg-green-600 hover:bg-green-500 text-white text-2xl rounded-3xl shadow-xl hover:scale-105 hover:shadow-2xl transition-all duration-200 font-semibold focus:outline-none focus:ring-4 focus:ring-green-400 focus:ring-opacity-50">
+      <i class="fa-solid fa-chart-pie"></i>
+      Visualize
+    </a>
+  </div>
+</body>
+</html>

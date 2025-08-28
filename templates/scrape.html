@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Start Scraping</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome CDN for modern icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+</head>
+<body class="bg-black min-h-screen flex flex-col items-center justify-center">
+  <div class="bg-gray-900 p-10 rounded-3xl shadow-2xl border border-gray-700 w-full max-w-md text-center">
+    <div class="mb-8">
+      <div class="inline-flex items-center justify-center w-20 h-20 bg-blue-600 rounded-full mb-6">
+        <i class="fa-solid fa-download text-white text-3xl"></i>
+      </div>
+      <h2 class="text-4xl font-bold text-white mb-4">Ready to Scrape</h2>
+      <p class="text-gray-400 text-lg mb-6">This will fetch and update data from various sources into your database.</p>
+      
+      <div class="text-left bg-gray-800 rounded-xl p-4 mb-6">
+        <h3 class="text-white font-semibold mb-2 flex items-center gap-2">
+          <i class="fa-solid fa-list text-blue-400"></i>
+          Data Sources:
+        </h3>
+        <ul class="text-gray-300 space-y-1 text-sm">
+          <li class="flex items-center gap-2">
+            <i class="fa-solid fa-globe text-green-400 text-xs"></i>
+            Countries & Demographics
+          </li>
+          <li class="flex items-center gap-2">
+            <i class="fa-solid fa-building text-blue-400 text-xs"></i>
+            International Organizations
+          </li>
+          <li class="flex items-center gap-2">
+            <i class="fa-solid fa-handshake text-yellow-400 text-xs"></i>
+            Trade Relations
+          </li>
+          <li class="flex items-center gap-2">
+            <i class="fa-solid fa-map text-purple-400 text-xs"></i>
+            Geographic Borders
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <form method="post" class="space-y-4">
+      <button type="submit" 
+              class="w-full flex items-center justify-center gap-3 px-8 py-5 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white font-bold rounded-2xl shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-blue-400 focus:ring-opacity-50 text-xl">
+        <i class="fa-solid fa-play text-xl"></i>
+        Start Scraping Process
+      </button>
+      
+      <a href="/" 
+         class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gray-700 hover:bg-gray-600 text-gray-300 hover:text-white font-medium rounded-xl transition-all duration-200">
+        <i class="fa-solid fa-arrow-left"></i>
+        Back to Home
+      </a>
+    </form>
+    
+    <div class="mt-6">
+      <p class="text-gray-500 text-xs">
+        <i class="fa-solid fa-info-circle mr-1"></i>
+        This process may take a few minutes to complete
+      </p>
+    </div>
+  </div>
+</body>
+</html>
