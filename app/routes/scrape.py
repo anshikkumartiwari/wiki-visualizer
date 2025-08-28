@@ -68,8 +68,13 @@ def scrape():
     global scraping_status
     
     if request.method == "POST":
+        # Validate secret key
+        secret_key = request.form.get('secret_key')
+        if secret_key != 'supersecret':
+            return render_template("scrape.html", error="Invalid secret key. Please try again.")
+        
         if scraping_status['in_progress']:
-            return jsonify({'error': 'Scraping already in progress'}), 400
+            return render_template("scrape.html", error="Scraping already in progress. Please wait.")
         
         # Start scraping in background thread
         thread = threading.Thread(target=run_scraping_process)

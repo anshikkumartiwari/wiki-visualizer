@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Country Visualizations - Wiki Visualizer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome CDN for modern icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+</head>
+<body class="bg-black min-h-screen p-8">
+  <div class="max-w-6xl mx-auto">
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <div class="inline-flex items-center justify-center w-20 h-20 bg-green-600 rounded-full mb-6">
+        <i class="fa-solid fa-globe-americas text-white text-3xl"></i>
+      </div>
+      <h2 class="text-5xl font-bold text-white mb-4">Country Data Visualizations</h2>
+      <p class="text-gray-400 text-lg">Explore comprehensive country data through interactive charts</p>
+      
+      <div class="flex justify-center gap-4 mt-6">
+        <a href="/visualize" class="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-lg transition-colors flex items-center gap-2">
+          <i class="fa-solid fa-arrow-left"></i> Back to Categories
+        </a>
+        <a href="/" class="px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors flex items-center gap-2">
+          <i class="fa-solid fa-home"></i> Home
+        </a>
+      </div>
+    </div>
+
+    <!-- Visualization Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      <!-- Population vs Area -->
+      <a href="/visualize/countries/population-area" 
+         class="group relative overflow-hidden bg-gradient-to-br from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white rounded-3xl p-8 shadow-2xl hover:scale-105 transition-all duration-300 hover:shadow-blue-500/25">
+        <div class="flex flex-col items-center text-center">
+          <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center group-hover:bg-white/30 transition-colors mb-4">
+            <i class="fa-solid fa-chart-scatter text-3xl"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-3">Population vs Area</h3>
+          <p class="text-blue-100 text-sm opacity-90 mb-4">Scatter plot comparing country size and population with regional coloring</p>
+          <div class="flex flex-wrap gap-2 text-xs">
+            <span class="px-2 py-1 bg-white/20 rounded-full">Log Scale</span>
+            <span class="px-2 py-1 bg-white/20 rounded-full">Interactive</span>
+            <span class="px-2 py-1 bg-white/20 rounded-full">Regional</span>
+          </div>
+        </div>
+        <div class="absolute -top-4 -right-4 w-24 h-24 bg-white/10 rounded-full blur-xl"></div>
+      </a>
+
+      <!-- Population Density -->
+      <a href="/visualize/countries/population-density" 
+         class="group relative overflow-hidden bg-gradient-to-br from-green-600 to-green-700 hover:from-green-500 hover:to-green-600 text-white rounded-3xl p-8 shadow-2xl hover:scale-105 transition-all duration-300 hover:shadow-green-500/25">
+        <div class="flex flex-col items-center text-center">
+          <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center group-hover:bg-white/30 transition-colors mb-4">
+            <i class="fa-solid fa-chart-bar text-3xl"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-3">Population Density</h3>
+          <p class="text-green-100 text-sm opacity-90 mb-4">Horizontal bar chart showing the most densely populated countries</p>
+          <div class="flex flex-wrap gap-2 text-xs">
+            <span class="px-2 py-1 bg-white/20 rounded-full">Top 30</span>
+            <span class="px-2 py-1 bg-white/20 rounded-full">Ranked</span>
+            <span class="px-2 py-1 bg-white/20 rounded-full">Color Coded</span>
+          </div>
+        </div>
+        <div class="absolute -top-4 -right-4 w-24 h-24 bg-white/10 rounded-full blur-xl"></div>
+      </a>
+
+      <!-- Regional Analysis -->
+      <a href="/visualize/countries/by-region" 
+         class="group relative overflow-hidden bg-gradient-to-br from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 text-white rounded-3xl p-8 shadow-2xl hover:scale-105 transition-all duration-300 hover:shadow-purple-500/25">
+        <div class="flex flex-col items-center text-center">
+          <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center group-hover:bg-white/30 transition-colors mb-4">
+            <i class="fa-solid fa-chart-pie text-3xl"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-3">Regional Analysis</h3>
+          <p class="text-purple-100 text-sm opacity-90 mb-4">Multi-chart dashboard analyzing data by world regions</p>
+          <div class="flex flex-wrap gap-2 text-xs">
+            <span class="px-2 py-1 bg-white/20 rounded-full">Dashboard</span>
+            <span class="px-2 py-1 bg-white/20 rounded-full">Multi-Chart</span>
+            <span class="px-2 py-1 bg-white/20 rounded-full">Summary</span>
+          </div>
+        </div>
+        <div class="absolute -top-4 -right-4 w-24 h-24 bg-white/10 rounded-full blur-xl"></div>
+      </a>
+
+      <!-- World Map -->
+      <a href="/visualize/countries/world-map" 
+         class="group relative overflow-hidden bg-gradient-to-br from-orange-600 to-orange-700 hover:from-orange-500 hover:to-orange-600 text-white rounded-3xl p-8 shadow-2xl hover:scale-105 transition-all duration-300 hover:shadow-orange-500/25">
+        <div class="flex flex-col items-center text-center">
+          <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center group-hover:bg-white/30 transition-colors mb-4">
+            <i class="fa-solid fa-earth-americas text-3xl"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-3">World Map</h3>
+          <p class="text-orange-100 text-sm opacity-90 mb-4">Interactive choropleth map showing population data globally</p>
+          <div class="flex flex-wrap gap-2 text-xs">
+            <span class="px-2 py-1 bg-white/20 rounded-full">Choropleth</span>
+            <span class="px-2 py-1 bg-white/20 rounded-full">Geographic</span>
+            <span class="px-2 py-1 bg-white/20 rounded-full">Interactive</span>
+          </div>
+        </div>
+        <div class="absolute -top-4 -right-4 w-24 h-24 bg-white/10 rounded-full blur-xl"></div>
+      </a>
+
+      <!-- Economic Data (Future) -->
+      <div class="group relative overflow-hidden bg-gradient-to-br from-gray-600 to-gray-700 text-white rounded-3xl p-8 shadow-2xl opacity-60">
+        <div class="flex flex-col items-center text-center">
+          <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-4">
+            <i class="fa-solid fa-dollar-sign text-3xl"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-3">Economic Data</h3>
+          <p class="text-gray-200 text-sm opacity-90 mb-4">GDP, trade, and economic indicators visualization</p>
+          <div class="flex flex-wrap gap-2 text-xs">
+            <span class="px-2 py-1 bg-white/20 rounded-full">Coming Soon</span>
+          </div>
+        </div>
+        <div class="absolute -top-4 -right-4 w-24 h-24 bg-white/10 rounded-full blur-xl"></div>
+      </div>
+
+      <!-- Cultural Data (Future) -->
+      <div class="group relative overflow-hidden bg-gradient-to-br from-gray-600 to-gray-700 text-white rounded-3xl p-8 shadow-2xl opacity-60">
+        <div class="flex flex-col items-center text-center">
+          <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-4">
+            <i class="fa-solid fa-flag text-3xl"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-3">Cultural Data</h3>
+          <p class="text-gray-200 text-sm opacity-90 mb-4">Languages, cultures, and social indicators</p>
+          <div class="flex flex-wrap gap-2 text-xs">
+            <span class="px-2 py-1 bg-white/20 rounded-full">Coming Soon</span>
+          </div>
+        </div>
+        <div class="absolute -top-4 -right-4 w-24 h-24 bg-white/10 rounded-full blur-xl"></div>
+      </div>
+
+    </div>
+
+    <!-- Data Info -->
+    <div class="mt-12 bg-gray-900 rounded-xl p-6 border border-gray-700">
+      <h3 class="text-white text-xl font-bold mb-4 flex items-center gap-2">
+        <i class="fa-solid fa-info-circle text-blue-400"></i>
+        About the Data
+      </h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-300 text-sm">
+        <div>
+          <h4 class="font-semibold text-white mb-2">Data Sources:</h4>
+          <ul class="space-y-1">
+            <li>• REST Countries API for basic country information</li>
+            <li>• World Bank API for economic indicators (limited)</li>
+            <li>• Calculated fields for population density and analysis</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-white mb-2">Chart Features:</h4>
+          <ul class="space-y-1">
+            <li>• Interactive hover tooltips and zoom functionality</li>
+            <li>• Color-coded regions and data categories</li>
+            <li>• Responsive design for all screen sizes</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
