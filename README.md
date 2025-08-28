@@ -40,6 +40,7 @@ wiki-visualizer
 ├─ 📁venv
 ├─ 📄.gitignore
 ├─ 📄init_database.py
+├─ 📄requirements.txt
 ├─ 📄run.py
 └─ 📄test_system.py
 ```
