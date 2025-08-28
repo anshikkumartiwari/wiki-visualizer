@@ -1,0 +1,37 @@
+# Virtual environment
+venv/
+ENV/
+env/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+
+# SQLite database
+database/*.db
+*.sqlite3
+
+# Logs
+*.log
+
+# Flask instance folder
+instance/
+
+# IDE/editor configs
+.vscode/
+.idea/
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints/
+
+# OneDrive sync files
+*.tmp
+~$*
